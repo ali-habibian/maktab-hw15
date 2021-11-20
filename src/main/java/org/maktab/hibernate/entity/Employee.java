@@ -1,0 +1,28 @@
+package org.maktab.hibernate.entity;
+
+import org.maktab.hibernate.entity.base.BaseEntity;
+
+import javax.persistence.*;
+
+@Entity
+public class Employee implements BaseEntity<Integer> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @OneToOne
+    private BankBranch bankBranch;
+
+    @OneToOne
+    private Employee boss;
+
+    @Override
+    public Integer getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+}
