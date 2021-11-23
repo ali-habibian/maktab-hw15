@@ -9,6 +9,8 @@ public class BankBranch implements BaseEntity<Integer> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String city;
+    private Integer code;
 
     @OneToOne
     private Employee boss;
