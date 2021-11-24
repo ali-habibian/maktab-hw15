@@ -14,7 +14,7 @@ public class Customer implements BaseEntity<Integer> {
     private String userName;
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private Set<Account> accounts;
 
     @Override

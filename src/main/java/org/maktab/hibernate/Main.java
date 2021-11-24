@@ -1,6 +1,7 @@
 package org.maktab.hibernate;
 
 import org.maktab.hibernate.config.DbConfig;
+import org.maktab.hibernate.dao.EmployeeDao;
 import org.maktab.hibernate.entity.Account;
 import org.maktab.hibernate.entity.Customer;
 import org.maktab.hibernate.entity.Employee;
@@ -30,10 +31,12 @@ public class Main {
 //        EmployeeRole role = employee1.getRole();
 //        System.out.println(role);
 
-        Account account = new Account();
-        account.setAccountNumber(1222554555666L);
-        account.setBalance(500.0);
-        entityManager.persist(account);
+//        Account account = new Account();
+//        account.setAccountNumber(1222554555666L);
+//        account.setBalance(500.0);
+//        entityManager.persist(account);
+//        EmployeeDao employeeDao = new EmployeeDao();
+//        employeeDao.login("a","123");
 
 
         // Problem with get all transactions

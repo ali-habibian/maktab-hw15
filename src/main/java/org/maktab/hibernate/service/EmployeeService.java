@@ -1,6 +1,5 @@
 package org.maktab.hibernate.service;
 
-import org.maktab.hibernate.dao.AbstractJpaDao;
 import org.maktab.hibernate.dao.EmployeeDao;
 import org.maktab.hibernate.entity.Employee;
 
@@ -10,7 +9,7 @@ public class EmployeeService extends AbstractCrudService<Employee, Integer> {
     }
 
     @Override
-    public AbstractJpaDao<Employee, Integer> getBaseDao() {
+    public EmployeeDao getBaseDao() {
         return (EmployeeDao) super.getBaseDao();
     }
 }

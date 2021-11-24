@@ -86,4 +86,18 @@ public class Employee implements BaseEntity<Integer> {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", salary=" + salary +
+                ", bankBranch=" + bankBranch +
+                ", boss=" + boss +
+                '}';
+    }
 }
