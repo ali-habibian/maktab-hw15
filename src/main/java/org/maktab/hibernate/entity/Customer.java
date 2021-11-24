@@ -58,4 +58,8 @@ public class Customer implements BaseEntity<Integer> {
     public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
+
+    public void addAccount(Account account){
+        this.accounts.add(account);
+    }
 }

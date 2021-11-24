@@ -1,6 +1,5 @@
 package org.maktab.hibernate.entity.transaction;
 
-import jdk.jfr.Timestamp;
 import org.hibernate.annotations.CreationTimestamp;
 import org.maktab.hibernate.entity.Account;
 import org.maktab.hibernate.entity.transaction.base.BaseTransaction;
