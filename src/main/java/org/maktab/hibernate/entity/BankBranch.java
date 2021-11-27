@@ -3,6 +3,7 @@ package org.maktab.hibernate.entity;
 import org.maktab.hibernate.entity.base.BaseEntity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class BankBranch implements BaseEntity<Integer> {
@@ -14,6 +15,15 @@ public class BankBranch implements BaseEntity<Integer> {
 
     @OneToOne
     private Employee boss;
+
+    @OneToMany(mappedBy = "bankBranch", cascade = CascadeType.ALL)
+    private Set<Employee> tellers;
+
+    @OneToMany(mappedBy = "bankBranch", cascade = CascadeType.ALL)
+    private Set<Account> accounts;
+
+    @OneToMany(mappedBy = "bankBranch", cascade = CascadeType.ALL)
+    private Set<Customer> customers;
 
     @Override
     public Integer getId() {
@@ -47,5 +57,29 @@ public class BankBranch implements BaseEntity<Integer> {
 
     public void setBoss(Employee boss) {
         this.boss = boss;
+    }
+
+    public Set<Employee> getTellers() {
+        return tellers;
+    }
+
+    public void setTellers(Set<Employee> tellers) {
+        this.tellers = tellers;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
+    }
+
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
     }
 }

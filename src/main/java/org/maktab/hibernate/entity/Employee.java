@@ -3,6 +3,7 @@ package org.maktab.hibernate.entity;
 import org.maktab.hibernate.entity.base.BaseEntity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Employee implements BaseEntity<Integer> {
@@ -15,7 +16,7 @@ public class Employee implements BaseEntity<Integer> {
     private EmployeeRole role;
     private Double salary;
 
-    @OneToOne
+    @ManyToOne
     private BankBranch bankBranch;
 
     @OneToOne

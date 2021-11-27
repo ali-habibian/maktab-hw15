@@ -2,11 +2,9 @@ package org.maktab.hibernate.entity;
 
 import org.maktab.hibernate.entity.base.BaseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.Random;
 
 @Entity
 public class CreditCard implements BaseEntity<Integer> {
@@ -17,6 +15,17 @@ public class CreditCard implements BaseEntity<Integer> {
     private Integer cvv2;
     private Date expireDate;
     private String password;
+
+    @OneToOne(mappedBy = "creditCard", cascade = CascadeType.ALL)
+    private Account account;
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     @Override
     public Integer getId() {
@@ -32,8 +41,9 @@ public class CreditCard implements BaseEntity<Integer> {
         return cardNumber;
     }
 
-    public void setCardNumber(Long cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setCardNumber() {
+        Random random = new Random();
+        this.cardNumber = random.nextLong(1_000_000_000_000_000L, 9_999_999_999_999_999L);
     }
 
     public int getCvv2() {

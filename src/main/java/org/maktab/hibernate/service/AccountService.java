@@ -9,8 +9,12 @@ public class AccountService extends AbstractCrudService<Account, Integer> {
         setBaseDao(new AccountDao());
     }
 
+    public Account findByAccountNumber(Long accountNumber) {
+        return getBaseDao().findByAccountNumber(accountNumber);
+    }
+
     @Override
-    public AbstractJpaDao<Account, Integer> getBaseDao() {
+    public AccountDao getBaseDao() {
         return (AccountDao) super.getBaseDao();
     }
 }

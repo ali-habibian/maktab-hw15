@@ -2,8 +2,7 @@ package org.maktab.hibernate.command.bankbranch;
 
 import org.maktab.hibernate.command.base.BaseCommand;
 
-public class AddBankBranchCommand implements BaseCommand {
-    @Override
+public class AddBankBranchCommand {
     public void execute() {
 
     }

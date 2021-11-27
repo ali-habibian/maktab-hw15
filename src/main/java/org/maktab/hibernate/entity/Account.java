@@ -3,6 +3,7 @@ package org.maktab.hibernate.entity;
 import org.maktab.hibernate.entity.base.BaseEntity;
 
 import javax.persistence.*;
+import java.util.Random;
 
 @Entity
 public class Account implements BaseEntity<Integer> {
@@ -15,7 +16,7 @@ public class Account implements BaseEntity<Integer> {
     @OneToOne
     private CreditCard creditCard;
 
-    @OneToOne
+    @ManyToOne
     private BankBranch bankBranch;
 
     @ManyToOne
@@ -35,8 +36,9 @@ public class Account implements BaseEntity<Integer> {
         return accountNumber;
     }
 
-    public void setAccountNumber(Long accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setAccountNumber() {
+        Random random = new Random();
+        this.accountNumber = random.nextLong(1_000_000L, 9_999_999L);
     }
 
     public Double getBalance() {

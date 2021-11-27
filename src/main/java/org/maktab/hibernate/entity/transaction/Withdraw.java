@@ -1,6 +1,7 @@
 package org.maktab.hibernate.entity.transaction;
 
 import org.maktab.hibernate.entity.Account;
+import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.base.BaseTransaction;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ public class Withdraw implements BaseTransaction {
     private Integer id;
 
     @OneToOne
-    private Account sourceAccount;
+    private CreditCard sourceCreditCard;
 
     private Double amount;
 
@@ -27,16 +28,6 @@ public class Withdraw implements BaseTransaction {
     @Override
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Override
-    public Account getSourceAccount() {
-        return sourceAccount;
-    }
-
-    @Override
-    public void setSourceAccount(Account sourceAccount) {
-        this.sourceAccount = sourceAccount;
     }
 
     @Override
@@ -57,6 +48,16 @@ public class Withdraw implements BaseTransaction {
     @Override
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public CreditCard getSourceCreditCard() {
+        return sourceCreditCard;
+    }
+
+    @Override
+    public void setSourceCreditCard(CreditCard sourceCreditCard) {
+        this.sourceCreditCard = sourceCreditCard;
     }
 
     @Override

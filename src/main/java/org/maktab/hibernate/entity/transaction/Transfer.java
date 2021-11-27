@@ -1,6 +1,7 @@
 package org.maktab.hibernate.entity.transaction;
 
 import org.maktab.hibernate.entity.Account;
+import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.base.BaseTransaction;
 
 import javax.persistence.*;
@@ -13,10 +14,10 @@ public class Transfer implements BaseTransaction {
     private Integer id;
 
     @OneToOne
-    private Account sourceAccount;
+    private CreditCard sourceCreditCard;
 
     @OneToOne
-    private Account destAccount;
+    private CreditCard destCreditCard;
 
     private Double amount;
 
@@ -43,24 +44,6 @@ public class Transfer implements BaseTransaction {
     }
 
     @Override
-    public Account getSourceAccount() {
-        return sourceAccount;
-    }
-
-    @Override
-    public void setSourceAccount(Account sourceAccount) {
-        this.sourceAccount = sourceAccount;
-    }
-
-    public Account getDestAccount() {
-        return destAccount;
-    }
-
-    public void setDestAccount(Account destAccount) {
-        this.destAccount = destAccount;
-    }
-
-    @Override
     public Double getAmount() {
         return amount;
     }
@@ -68,6 +51,24 @@ public class Transfer implements BaseTransaction {
     @Override
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public CreditCard getSourceCreditCard() {
+        return sourceCreditCard;
+    }
+
+    @Override
+    public void setSourceCreditCard(CreditCard sourceCreditCard) {
+        this.sourceCreditCard = sourceCreditCard;
+    }
+
+    public CreditCard getDestCreditCard() {
+        return destCreditCard;
+    }
+
+    public void setDestCreditCard(CreditCard destCreditCard) {
+        this.destCreditCard = destCreditCard;
     }
 
     @Override

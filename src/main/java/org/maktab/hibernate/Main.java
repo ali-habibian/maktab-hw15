@@ -7,18 +7,25 @@ import org.maktab.hibernate.entity.Customer;
 import org.maktab.hibernate.entity.Employee;
 import org.maktab.hibernate.entity.EmployeeRole;
 import org.maktab.hibernate.entity.transaction.Deposit;
+import org.maktab.hibernate.ui.MainMenu;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.sql.Date;
+import java.util.Calendar;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
 
-        EntityManagerFactory entityManagerFactory =
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.start();
+
+       /* EntityManagerFactory entityManagerFactory =
                 Persistence.createEntityManagerFactory("BankManagement");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();*/
 
 //        Employee employee = new Employee();
 //        employee.setFullName("Ali Habibian");
@@ -48,6 +55,6 @@ public class Main {
 //        account = deposit.getSourceAccount();
 //        entityManager.merge(account);
 
-        entityManager.getTransaction().commit();
+//        entityManager.getTransaction().commit();
     }
 }

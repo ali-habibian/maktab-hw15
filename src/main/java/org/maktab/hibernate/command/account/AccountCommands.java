@@ -7,18 +7,14 @@ import org.maktab.hibernate.service.AccountService;
 import org.maktab.hibernate.utilities.Input;
 import org.maktab.hibernate.utilities.Printer;
 
-public class AccountCommands implements BaseCommand {
+public class AccountCommands {
     private AccountService service;
 
     public AccountCommands(AccountService service) {
         this.service = service;
     }
 
-    @Override
     public void execute() {
-        Printer.printMessage("Enter initial balance:");
-        Double balance = Input.getDoubleInputValue("");
-        AddCreditCardCommand creditCardCommand = new AddCreditCardCommand();
-        creditCardCommand.execute();
+
     }
 }

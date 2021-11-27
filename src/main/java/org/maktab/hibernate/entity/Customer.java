@@ -14,7 +14,10 @@ public class Customer implements BaseEntity<Integer> {
     private String userName;
     private String password;
 
-    @OneToMany(mappedBy = "customer")
+    @ManyToOne
+    private BankBranch bankBranch;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Account> accounts;
 
     @Override
@@ -59,7 +62,15 @@ public class Customer implements BaseEntity<Integer> {
         this.accounts = accounts;
     }
 
-    public void addAccount(Account account){
+    public void addAccount(Account account) {
         this.accounts.add(account);
+    }
+
+    public BankBranch getBankBranch() {
+        return bankBranch;
+    }
+
+    public void setBankBranch(BankBranch bankBranch) {
+        this.bankBranch = bankBranch;
     }
 }

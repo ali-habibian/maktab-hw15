@@ -8,14 +8,14 @@ import org.maktab.hibernate.service.EmployeeService;
 import org.maktab.hibernate.utilities.Input;
 import org.maktab.hibernate.utilities.Printer;
 
-public class LoginEmployeeCommand implements BaseCommand {
+public class LoginEmployeeCommand  {
     private EmployeeService service;
 
     public LoginEmployeeCommand(EmployeeService service) {
         this.service = service;
     }
 
-    @Override
+
     public void execute() {
         Printer.printMessage("Enter UserName:");
         String userName = Input.getStringInputValue("");

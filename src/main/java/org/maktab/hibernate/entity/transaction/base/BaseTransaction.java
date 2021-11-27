@@ -1,6 +1,7 @@
 package org.maktab.hibernate.entity.transaction.base;
 
 import org.maktab.hibernate.entity.Account;
+import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.base.BaseEntity;
 
 import java.sql.Date;
@@ -11,9 +12,9 @@ public interface BaseTransaction extends BaseEntity<Integer> {
 
     void setAmount(Double amount);
 
-    Account getSourceAccount();
+    CreditCard getSourceCreditCard();
 
-    void setSourceAccount(Account sourceAccount);
+    void setSourceCreditCard(CreditCard sourceCreditCard);
 
     Date getDate();
 

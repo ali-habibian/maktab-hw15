@@ -2,6 +2,7 @@ package org.maktab.hibernate.service;
 
 import org.maktab.hibernate.dao.AbstractJpaDao;
 import org.maktab.hibernate.dao.CreditCardDao;
+import org.maktab.hibernate.entity.Account;
 import org.maktab.hibernate.entity.CreditCard;
 
 public class CreditCardService extends AbstractCrudService<CreditCard, Integer> {
@@ -9,8 +10,12 @@ public class CreditCardService extends AbstractCrudService<CreditCard, Integer> 
         setBaseDao(new CreditCardDao());
     }
 
+    public CreditCard findByCardNumber(Long cardNumber) {
+        return getBaseDao().findByCreditCardNumber(cardNumber);
+    }
+
     @Override
-    public AbstractJpaDao<CreditCard, Integer> getBaseDao() {
+    public CreditCardDao getBaseDao() {
         return (CreditCardDao) super.getBaseDao();
     }
 }

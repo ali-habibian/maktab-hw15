@@ -2,6 +2,7 @@ package org.maktab.hibernate.entity.transaction;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.maktab.hibernate.entity.Account;
+import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.base.BaseTransaction;
 
 import javax.persistence.*;
@@ -13,8 +14,8 @@ public class Deposit implements BaseTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
-    private Account sourceAccount;
+    @ManyToOne
+    private CreditCard sourceCreditCard;
 
     private Double amount;
 
@@ -42,16 +43,6 @@ public class Deposit implements BaseTransaction {
     }
 
     @Override
-    public Account getSourceAccount() {
-        return sourceAccount;
-    }
-
-    @Override
-    public void setSourceAccount(Account sourceAccount) {
-        this.sourceAccount = sourceAccount;
-    }
-
-    @Override
     public Double getAmount() {
         return amount;
     }
@@ -62,11 +53,17 @@ public class Deposit implements BaseTransaction {
     }
 
     @Override
+    public CreditCard getSourceCreditCard() {
+        return sourceCreditCard;
+    }
+
+    @Override
+    public void setSourceCreditCard(CreditCard sourceCreditCard) {
+        this.sourceCreditCard = sourceCreditCard;
+    }
+
+    @Override
     public void execute() {
-        Double oldBalance = sourceAccount.getBalance();
-        Double newBalance = oldBalance + amount;
-//        java.util.Date utilDate = new java.util.Date();
-//        date = new Date(utilDate.getTime());
-        sourceAccount.setBalance(newBalance);
+
     }
 }
