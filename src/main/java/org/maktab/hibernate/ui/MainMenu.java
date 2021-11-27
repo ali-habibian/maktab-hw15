@@ -20,7 +20,7 @@ public class MainMenu implements BaseMenu {
     @Override
     public void start() {
         Map<Integer, BaseMenu> mainMenuMap = new HashMap<>();
-        mainMenuMap.put(1, new BossMenu());
+        mainMenuMap.put(1, new BossMenu(employeeService));
         mainMenuMap.put(2, new TellerMenu(employeeService, customerService));
         mainMenuMap.put(3, new CustomerMenu());
 
