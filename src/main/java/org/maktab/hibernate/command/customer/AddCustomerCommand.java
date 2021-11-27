@@ -9,7 +9,7 @@ import org.maktab.hibernate.service.CustomerService;
 import org.maktab.hibernate.utilities.Input;
 import org.maktab.hibernate.utilities.Printer;
 
-public class AddCustomerCommand implements BaseCommand<Employee>{
+public class AddCustomerCommand implements BaseCommand<Employee, Customer>{
     private CustomerService customerService;
 
     public AddCustomerCommand(CustomerService customerService) {

@@ -2,6 +2,7 @@ package org.maktab.hibernate.service;
 
 import org.maktab.hibernate.dao.AbstractJpaDao;
 import org.maktab.hibernate.entity.base.BaseEntity;
+import org.maktab.hibernate.exception.DataNotFoundException;
 
 import java.util.List;
 
@@ -26,21 +27,17 @@ public class AbstractCrudService<T extends BaseEntity<ID>, ID extends Number> {
         baseDao.getEntityManager().getTransaction().commit();
     }
 
-    public void deleteById(ID id) {
+    public void deleteById(ID id) throws DataNotFoundException {
         baseDao.getEntityManager().getTransaction().begin();
         baseDao.delete(id);
         baseDao.getEntityManager().getTransaction().commit();
     }
 
     public T loadById(ID id) {
-        baseDao.getEntityManager().getTransaction().begin();
-        T t = baseDao.loadById(id);
-        baseDao.getEntityManager().getTransaction().commit();
-        return t;
+        return baseDao.loadById(id);
     }
 
     public List<T> loadAll() {
-        baseDao.getEntityManager().getTransaction().begin();
         return baseDao.loadAll();
     }
 }

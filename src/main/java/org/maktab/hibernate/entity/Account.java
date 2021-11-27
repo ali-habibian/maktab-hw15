@@ -13,13 +13,13 @@ public class Account implements BaseEntity<Integer> {
     private Long accountNumber;
     private Double balance;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private CreditCard creditCard;
 
     @ManyToOne
     private BankBranch bankBranch;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
     @Override

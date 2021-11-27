@@ -73,4 +73,12 @@ public class Customer implements BaseEntity<Integer> {
     public void setBankBranch(BankBranch bankBranch) {
         this.bankBranch = bankBranch;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", fullName='" + fullName + '\'' +
+                '}';
+    }
 }

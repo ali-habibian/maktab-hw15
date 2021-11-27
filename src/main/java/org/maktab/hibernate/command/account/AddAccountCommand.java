@@ -12,7 +12,7 @@ import org.maktab.hibernate.utilities.Printer;
 
 import javax.persistence.NoResultException;
 
-public class AddAccountCommand implements BaseCommand<Customer> {
+public class AddAccountCommand implements BaseCommand<Customer, Account> {
 
     private AccountService accountService;
 

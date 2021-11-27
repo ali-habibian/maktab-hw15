@@ -5,6 +5,7 @@ import org.maktab.hibernate.command.customer.AddCustomerCommand;
 import org.maktab.hibernate.command.customer.GetAllCustomersCommand;
 import org.maktab.hibernate.command.customer.RemoveCustomerCommand;
 import org.maktab.hibernate.command.customer.UpdateCustomerCommand;
+import org.maktab.hibernate.entity.Customer;
 import org.maktab.hibernate.entity.Employee;
 import org.maktab.hibernate.exception.DataNotFoundException;
 import org.maktab.hibernate.service.CustomerService;
@@ -20,7 +21,7 @@ public class TellerMenu implements BaseMenu {
     private EmployeeService employeeService;
     private CustomerService customerService;
 
-    Map<Integer, BaseCommand<Employee>> customerCommandsMap = new HashMap<>();
+    Map<Integer, BaseCommand<Employee, Customer>> customerCommandsMap = new HashMap<>();
 
     public TellerMenu(EmployeeService employeeService, CustomerService customerService) {
         this.employeeService = employeeService;
@@ -38,16 +39,16 @@ public class TellerMenu implements BaseMenu {
         Employee loginEmployee = login();
 
         int command = 0;
-        while (command != 4) {
+        while (command != 5) {
             Printer.printMessage("1. Add New Customer");
             Printer.printMessage("2. Remove Customer");
             Printer.printMessage("3. Edit Customer");
             Printer.printMessage("4. Show All Customer");
             Printer.printMessage("5. Logout");
             command = Input.getIntInputValue("");
-            if (command > 4) {
+            if (command > 5) {
                 System.out.println("invalid command");
-            } else if (command < 4) {
+            } else if (command < 5) {
                 customerCommandsMap.get(command).execute(loginEmployee);
             } else {
                 System.out.println("Exited");

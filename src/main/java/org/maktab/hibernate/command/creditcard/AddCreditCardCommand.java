@@ -10,7 +10,7 @@ import java.sql.Date;
 import java.util.Calendar;
 import java.util.Random;
 
-public class AddCreditCardCommand implements BaseCommand<Account> {
+public class AddCreditCardCommand implements BaseCommand<Account, CreditCard> {
     private CreditCardService cardService;
 
     public AddCreditCardCommand(CreditCardService cardService) {
@@ -18,6 +18,7 @@ public class AddCreditCardCommand implements BaseCommand<Account> {
     }
 
 
+    @Override
     public CreditCard execute(Account account) {
         CreditCard creditCard = new CreditCard();
 
@@ -30,7 +31,7 @@ public class AddCreditCardCommand implements BaseCommand<Account> {
                 creditCard.setCardNumber();
                 byCardNumber = cardService.findByCardNumber(creditCard.getCardNumber());
             }
-        }catch (NoResultException e){
+        } catch (NoResultException e) {
             System.out.println(e.getMessage());
         }
 

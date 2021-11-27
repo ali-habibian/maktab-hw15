@@ -2,6 +2,7 @@ package org.maktab.hibernate.dao;
 
 
 import org.maktab.hibernate.entity.base.BaseEntity;
+import org.maktab.hibernate.exception.DataNotFoundException;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,9 +18,14 @@ public abstract class AbstractJpaDao<T extends BaseEntity<ID>, ID extends Number
 
     public abstract void update(ID id, T newEntity);
 
-    public void delete(ID id) {
-        T entity = loadById(id);
-        MANAGER.remove(entity);
+    public void delete(ID id) throws DataNotFoundException {
+        T entity;
+        try {
+            entity = loadById(id);
+            MANAGER.remove(entity);
+        }catch (IllegalArgumentException e){
+            throw new DataNotFoundException("Data Not Found!");
+        }
     }
 
     public List<T> loadAll() {

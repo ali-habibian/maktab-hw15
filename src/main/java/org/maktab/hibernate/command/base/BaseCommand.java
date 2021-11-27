@@ -2,6 +2,6 @@ package org.maktab.hibernate.command.base;
 
 import org.maktab.hibernate.entity.base.BaseEntity;
 
-public interface BaseCommand<T extends BaseEntity<Integer>> {
-   <U> U execute(T t);
+public interface BaseCommand<T, U extends BaseEntity<Integer>> {
+    U execute(T t);
 }
