@@ -69,4 +69,14 @@ public class CreditCard implements BaseEntity<Integer> {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "CreditCard{" +
+                "id=" + id +
+                ", cardNumber=" + cardNumber +
+                ", cvv2=" + cvv2 +
+                ", expireDate=" + expireDate +
+                '}';
+    }
 }

@@ -1,15 +1,15 @@
 package org.maktab.hibernate.ui;
 
 import org.maktab.hibernate.command.base.BaseCommand;
+import org.maktab.hibernate.command.creditcard.UpdateCreditCardCommand;
+import org.maktab.hibernate.command.transaction.GetAllTransactionsCommand;
+import org.maktab.hibernate.command.transaction.deposit.AddDepositCommand;
+import org.maktab.hibernate.command.transaction.transfer.AddTransferCommand;
+import org.maktab.hibernate.command.transaction.withdraw.AddWithdrawCommand;
 import org.maktab.hibernate.entity.Customer;
-import org.maktab.hibernate.entity.Employee;
-import org.maktab.hibernate.entity.EmployeeRole;
 import org.maktab.hibernate.entity.transaction.base.BaseTransaction;
 import org.maktab.hibernate.exception.DataNotFoundException;
-import org.maktab.hibernate.service.CustomerService;
-import org.maktab.hibernate.service.DepositService;
-import org.maktab.hibernate.service.TransferService;
-import org.maktab.hibernate.service.WithdrawService;
+import org.maktab.hibernate.service.*;
 import org.maktab.hibernate.utilities.Input;
 import org.maktab.hibernate.utilities.Printer;
 
@@ -22,6 +22,7 @@ public class CustomerMenu implements BaseMenu {
     private final DepositService depositService;
     private final WithdrawService withdrawService;
     private final TransferService transferService;
+    private final CreditCardService creditCardService;
 
     Map<Integer, BaseCommand<Customer, BaseTransaction>> transactionCommandsMap = new HashMap<>();
 
@@ -30,6 +31,13 @@ public class CustomerMenu implements BaseMenu {
         this.depositService = new DepositService();
         this.withdrawService = new WithdrawService();
         this.transferService = new TransferService();
+        this.creditCardService = new CreditCardService();
+
+        transactionCommandsMap.put(1, new AddDepositCommand(depositService));
+        transactionCommandsMap.put(2, new AddWithdrawCommand(withdrawService));
+        transactionCommandsMap.put(3, new AddTransferCommand(transferService));
+        transactionCommandsMap.put(4, new GetAllTransactionsCommand(depositService, transferService, withdrawService));
+        transactionCommandsMap.put(5, new UpdateCreditCardCommand(creditCardService));
     }
 
     @Override
