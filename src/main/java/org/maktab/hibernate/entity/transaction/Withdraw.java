@@ -1,5 +1,6 @@
 package org.maktab.hibernate.entity.transaction;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.maktab.hibernate.entity.Account;
 import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.base.BaseTransaction;
@@ -18,6 +19,7 @@ public class Withdraw implements BaseTransaction {
 
     private Double amount;
 
+    @CreationTimestamp
     private Date date;
 
     @Override
@@ -63,5 +65,15 @@ public class Withdraw implements BaseTransaction {
     @Override
     public void execute() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Withdraw{" +
+                "id=" + id +
+                ", sourceCreditCard id=" + sourceCreditCard.getId() +
+                ", amount=" + amount +
+                ", date=" + date +
+                '}';
     }
 }

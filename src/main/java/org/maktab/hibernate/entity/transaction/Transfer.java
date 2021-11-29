@@ -1,5 +1,6 @@
 package org.maktab.hibernate.entity.transaction;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.maktab.hibernate.entity.Account;
 import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.base.BaseTransaction;
@@ -21,6 +22,7 @@ public class Transfer implements BaseTransaction {
 
     private Double amount;
 
+    @CreationTimestamp
     private Date date;
 
     @Override
@@ -74,5 +76,16 @@ public class Transfer implements BaseTransaction {
     @Override
     public void execute() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Transfer{" +
+                "id=" + id +
+                ", sourceCreditCard id=" + sourceCreditCard.getId() +
+                ", destCreditCard id=" + destCreditCard.getId() +
+                ", amount=" + amount +
+                ", date=" + date +
+                '}';
     }
 }

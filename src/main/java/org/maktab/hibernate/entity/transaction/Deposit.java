@@ -66,4 +66,14 @@ public class Deposit implements BaseTransaction {
     public void execute() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Deposit{" +
+                "id=" + id +
+                ", sourceCreditCard id=" + sourceCreditCard.getId() +
+                ", amount=" + amount +
+                ", date=" + date +
+                '}';
+    }
 }
