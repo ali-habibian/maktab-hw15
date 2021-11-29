@@ -10,7 +10,7 @@ public class CustomerService extends AbstractCrudService<Customer, Integer> {
     }
 
     @Override
-    public AbstractJpaDao<Customer, Integer> getBaseDao() {
+    public CustomerDao getBaseDao() {
         return (CustomerDao) super.getBaseDao();
     }
 }
