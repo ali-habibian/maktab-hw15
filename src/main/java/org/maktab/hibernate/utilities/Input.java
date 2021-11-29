@@ -42,4 +42,15 @@ public class Input {
                     System.out.print(">> ");
             }
     }
+
+    public static long getLongInputValue(String msg) {
+        while (true)
+            try {
+                return Long.parseLong(getStringInputValue(msg));
+            } catch (Exception e) {
+                Printer.printErrorMessage("Invalid input!");
+                if (msg.isEmpty())
+                    System.out.print(">> ");
+            }
+    }
 }

@@ -10,7 +10,7 @@ public class BankBranchService extends AbstractCrudService<BankBranch, Integer> 
     }
 
     @Override
-    public AbstractJpaDao<BankBranch, Integer> getBaseDao() {
+    public BankBranchDao getBaseDao() {
         return (BankBranchDao) super.getBaseDao();
     }
 }
