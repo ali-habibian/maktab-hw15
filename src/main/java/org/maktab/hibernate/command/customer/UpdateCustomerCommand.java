@@ -17,7 +17,7 @@ public class UpdateCustomerCommand implements BaseCommand<Employee, Customer> {
 
 
     @Override
-    public Customer execute(Employee employee) {
+    public Customer execute(Employee teller) {
         Printer.printMessage("Enter customer id:");
         Integer customerId = Input.getIntInputValue("");
         Customer customer = customerService.loadById(customerId);

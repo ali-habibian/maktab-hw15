@@ -79,6 +79,9 @@ public class Customer implements BaseEntity<Integer> {
         return "Customer{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", bankBranch=" + bankBranch +
                 '}';
     }
 }
