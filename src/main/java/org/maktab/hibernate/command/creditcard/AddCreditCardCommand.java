@@ -56,18 +56,18 @@ public class AddCreditCardCommand implements BaseCommand<Account, CreditCard> {
     private static Date generateRndExpDate() {
         Random random = new Random();
         // creating a Calendar object
-        Calendar c1 = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
 
         // set Month starts with 0 i.e. ( 0 - Jan)
-        c1.set(Calendar.MONTH, random.nextInt(0, 11));
+        calendar.set(Calendar.MONTH, random.nextInt(0, 11));
 
         // set Date
-        c1.set(Calendar.DATE, random.nextInt(0, 29));
+        calendar.set(Calendar.DATE, random.nextInt(0, 29));
 
         // set Year
-        c1.set(Calendar.YEAR, random.nextInt(2022, 2025));
+        calendar.set(Calendar.YEAR, random.nextInt(2022, 2025));
 
         // creating a sql date object with specified time.
-        return new java.sql.Date(c1.getTime().getTime());
+        return new java.sql.Date(calendar.getTime().getTime());
     }
 }

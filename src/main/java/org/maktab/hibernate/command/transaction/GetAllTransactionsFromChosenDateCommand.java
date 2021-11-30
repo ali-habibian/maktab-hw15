@@ -15,17 +15,15 @@ import org.maktab.hibernate.utilities.Input;
 import org.maktab.hibernate.utilities.Printer;
 
 import javax.persistence.NoResultException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.sql.Date;
+import java.util.*;
 
-public class GetAllTransactionsCommand implements BaseCommand<Customer, BaseTransaction> {
+public class GetAllTransactionsFromChosenDateCommand implements BaseCommand<Customer, BaseTransaction> {
     private DepositService depositService;
     private TransferService transferService;
     private WithdrawService withdrawService;
 
-    public GetAllTransactionsCommand(DepositService depositService, TransferService transferService, WithdrawService withdrawService) {
+    public GetAllTransactionsFromChosenDateCommand(DepositService depositService, TransferService transferService, WithdrawService withdrawService) {
         this.depositService = depositService;
         this.transferService = transferService;
         this.withdrawService = withdrawService;
@@ -48,23 +46,25 @@ public class GetAllTransactionsCommand implements BaseCommand<Customer, BaseTran
         String password = Input.getStringInputValue("");
 
         if (selectedCreditCard != null && selectedCreditCard.getPassword().equals(password)) {
+            Date date = generateDate();
+
             List<Deposit> deposits = null;
             List<Withdraw> withdraws = null;
             List<Transfer> transfers = null;
             try {
-                deposits = depositService.findByCardNumber(selectedCreditCard);
+                deposits = depositService.findByCardNumberAndDate(selectedCreditCard, date);
             } catch (NoResultException e) {
                 System.out.println("Not find Deposit transaction");
             }
 
             try {
-                withdraws = withdrawService.findByCardNumber(selectedCreditCard);
+                withdraws = withdrawService.findByCardNumberAndDate(selectedCreditCard, date);
             } catch (NoResultException e) {
                 System.out.println("Not find Withdraw transaction");
             }
 
             try {
-                transfers = transferService.findByCardNumber(selectedCreditCard);
+                transfers = transferService.findByCardNumberAndDate(selectedCreditCard, date);
             } catch (NoResultException e) {
                 System.out.println("Not find Transfer transaction");
             }
@@ -84,5 +84,20 @@ public class GetAllTransactionsCommand implements BaseCommand<Customer, BaseTran
             System.out.println("Password is incorrect");
         }
         return null;
+    }
+
+    private static Date generateDate() {
+        Printer.printMessage("Enter month:");
+        int month = Input.getIntInputValue("");
+
+        Printer.printMessage("Enter day:");
+        int day = Input.getIntInputValue("");
+
+        Printer.printMessage("Enter year:");
+        int year = Input.getIntInputValue("");
+
+        String strDate = year + "-" + month + "-" + day;
+
+        return Date.valueOf(strDate);
     }
 }

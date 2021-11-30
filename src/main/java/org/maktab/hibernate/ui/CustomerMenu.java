@@ -3,6 +3,7 @@ package org.maktab.hibernate.ui;
 import org.maktab.hibernate.command.base.BaseCommand;
 import org.maktab.hibernate.command.creditcard.UpdateCreditCardCommand;
 import org.maktab.hibernate.command.transaction.GetAllTransactionsCommand;
+import org.maktab.hibernate.command.transaction.GetAllTransactionsFromChosenDateCommand;
 import org.maktab.hibernate.command.transaction.deposit.AddDepositCommand;
 import org.maktab.hibernate.command.transaction.transfer.AddTransferCommand;
 import org.maktab.hibernate.command.transaction.withdraw.AddWithdrawCommand;
@@ -38,6 +39,7 @@ public class CustomerMenu implements BaseMenu {
         transactionCommandsMap.put(3, new AddTransferCommand(transferService));
         transactionCommandsMap.put(4, new GetAllTransactionsCommand(depositService, transferService, withdrawService));
         transactionCommandsMap.put(5, new UpdateCreditCardCommand(creditCardService));
+        transactionCommandsMap.put(6, new GetAllTransactionsFromChosenDateCommand(depositService, transferService, withdrawService));
     }
 
     @Override
@@ -45,18 +47,19 @@ public class CustomerMenu implements BaseMenu {
         Customer loginCustomer = login();
 
         int command = 0;
-        while (command != 6) {
+        while (command != 7) {
             Printer.printMessage("1. Deposit Money");
             Printer.printMessage("2. Withdraw Money");
             Printer.printMessage("3. Transfer Money");
             Printer.printMessage("4. Show All Transactions");
             Printer.printMessage("5. Change card password");
-            Printer.printMessage("6. Logout");
+            Printer.printMessage("6. Show All Transactions from chosen date");
+            Printer.printMessage("7. Logout");
 
             command = Input.getIntInputValue("");
-            if (command > 6) {
+            if (command > 7) {
                 System.out.println("invalid command");
-            } else if (command < 6) {
+            } else if (command < 7) {
                 transactionCommandsMap.get(command).execute(loginCustomer);
             } else {
                 System.out.println("Exited");

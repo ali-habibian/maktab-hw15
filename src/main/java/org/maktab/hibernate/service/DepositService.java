@@ -5,6 +5,7 @@ import org.maktab.hibernate.entity.Account;
 import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.Deposit;
 
+import java.sql.Date;
 import java.util.List;
 
 public class DepositService extends AbstractCrudService<Deposit, Integer> {
@@ -30,5 +31,9 @@ public class DepositService extends AbstractCrudService<Deposit, Integer> {
 
     public List<Deposit> findByCardNumber(CreditCard selectedCreditCard) {
         return getBaseDao().findByCardNumber(selectedCreditCard);
+    }
+
+    public List<Deposit> findByCardNumberAndDate(CreditCard selectedCreditCard, Date date) {
+        return getBaseDao().findByCardNumberAndDate(selectedCreditCard, date);
     }
 }

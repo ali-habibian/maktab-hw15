@@ -6,6 +6,7 @@ import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.Transfer;
 
 import javax.xml.crypto.dsig.TransformException;
+import java.sql.Date;
 import java.util.List;
 
 public class TransferService extends AbstractCrudService<Transfer, Integer> {
@@ -40,5 +41,9 @@ public class TransferService extends AbstractCrudService<Transfer, Integer> {
 
     public List<Transfer> findByCardNumber(CreditCard selectedCreditCard) {
         return getBaseDao().findByCardNumber(selectedCreditCard);
+    }
+
+    public List<Transfer> findByCardNumberAndDate(CreditCard selectedCreditCard, Date date) {
+        return getBaseDao().findByCardNumberAndDate(selectedCreditCard, date);
     }
 }
