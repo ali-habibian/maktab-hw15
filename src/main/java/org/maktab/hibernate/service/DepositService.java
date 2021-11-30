@@ -2,7 +2,10 @@ package org.maktab.hibernate.service;
 
 import org.maktab.hibernate.dao.DepositDao;
 import org.maktab.hibernate.entity.Account;
+import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.Deposit;
+
+import java.util.List;
 
 public class DepositService extends AbstractCrudService<Deposit, Integer> {
     public DepositService() {
@@ -23,5 +26,9 @@ public class DepositService extends AbstractCrudService<Deposit, Integer> {
     @Override
     public DepositDao getBaseDao() {
         return (DepositDao) super.getBaseDao();
+    }
+
+    public List<Deposit> findByCardNumber(CreditCard selectedCreditCard) {
+        return getBaseDao().findByCardNumber(selectedCreditCard);
     }
 }

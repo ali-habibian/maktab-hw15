@@ -1,12 +1,12 @@
 package org.maktab.hibernate.service;
 
-import org.maktab.hibernate.dao.AbstractJpaDao;
 import org.maktab.hibernate.dao.WithdrawDao;
 import org.maktab.hibernate.entity.Account;
-import org.maktab.hibernate.entity.transaction.Deposit;
+import org.maktab.hibernate.entity.CreditCard;
 import org.maktab.hibernate.entity.transaction.Withdraw;
 
 import javax.xml.crypto.dsig.TransformException;
+import java.util.List;
 
 public class WithdrawService extends AbstractCrudService<Withdraw, Integer> {
     public WithdrawService() {
@@ -32,5 +32,9 @@ public class WithdrawService extends AbstractCrudService<Withdraw, Integer> {
         withdraw.setAmount(amount);
         withdraw.setSourceCreditCard(account.getCreditCard());
         this.saveOrUpdate(withdraw);
+    }
+
+    public List<Withdraw> findByCardNumber(CreditCard selectedCreditCard) {
+        return getBaseDao().findByCardNumber(selectedCreditCard);
     }
 }
